@@ -225,6 +225,7 @@ ob_start();
 ?>
 <html>
 	<head>
+		<meta charset="utf-8">
 		<title>Changeset Analyse f&uuml;r <?php echo $DISPLAY_NAME; ?></title>
 		<style type="text/css">
 		body {
