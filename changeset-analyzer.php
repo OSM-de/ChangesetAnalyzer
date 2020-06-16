@@ -97,8 +97,10 @@ foreach(glob($JSON_DIR . "changeset-*.json") as $fn) {
 	foreach(array_keys($ids) as $type) {
 		$fc = get_url_contents(sprintf($GET_ELEMENTS, $type, $type, $ids[$type]));
 		$xml = simplexml_load_string($fc);
-		foreach($xml->{$type} as $oincs) {
-			file_put_contents(sprintf($ELEMENT_JSON, substr($type, 0, 1), strval($oincs->attributes()->id), strval($oincs->attributes()->version)), json_encode($oincs));
+		if ($xml->{$type} != null) {
+			foreach($xml->{$type} as $oincs) {
+				file_put_contents(sprintf($ELEMENT_JSON, substr($type, 0, 1), strval($oincs->attributes()->id), strval($oincs->attributes()->version)), json_encode($oincs));
+			}
 		}
 	}
 }
